@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        textarea{
+            height: 70px;
+            width: 600px;
+            background-color: azure;
+        }
+        p{
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: black;
+            width: 600px;
+        }
+        button{
+            background-color: azure;
+            width: 200px;
+            height: 40px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        input{
+            height: 30px;
+            width: 600px;
+        }
+    </style>
+    
+</head>
+<body>
+    <form action="/home" method="post">
+        <textarea name="text" placeholder="Message(min: 25 leters)"></textarea>
+        <br>
+        <button>Submit</button>
+    </form>
+    <% for (let i = 0; i < article.length; i++) { %>
+       <p><%= article[i].text %></p>
+       <% if ( article[i].coment_id.length>0){%>
+          <% article[i].coment_id.forEach(i =>{%>
+            <h1><%= i.coment%></h1>
+          <% })%>
+       <%}%>
+       <form action="/new/<%= article[i]._id%>" method="post">
+        <label for="coment"> Post a comment</label>
+        <br>
+        <input type="text" name="coment" placeholder="min: 25 leters">
+        <button type="submit">Post </button>
+    </form>
+
+  <%  } %>
+
+
+</body>
+</html>
